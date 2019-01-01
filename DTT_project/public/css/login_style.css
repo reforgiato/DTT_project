@@ -1,0 +1,19 @@
+body {background-color: #00a0b0; margin-right: 700px; margin-top: 25px}
+hr {background-color:rgb(51, 146, 156); width: 1700px;padding-top: 3px;}
+main {background-color: white; border-radius: 15px; height: 900px; width: 1780px}
+form input[type=text] {border-radius: 7px; width: 570px;height: 50px; }
+form input[type=password] {border-radius: 7px; width: 570px;height: 50px;}
+form input[type=submit] {border-radius: 7px; width:250px; margin-top: 50px; margin-left: 220px;
+    background-color: #ef7d50; color:white;}
+.image {padding-top: 70px; padding-left: 60px; padding-bottom: 30px}
+.image img {width:620px; height: 200px;}
+.form_class {background-color: #fff4cf; width: 800px; height: 400px; margin-left: 480px; border-radius: 15px;
+    padding-top: 90px; padding-left: 40px;font-size: 31px;}
+.pass_label {margin-left: 10px}
+.username_field {margin-bottom: 30px; height: 50px;}
+.top_hr {margin-top: 4px; margin-bottom: 45px;}
+.bottom_hr {margin-top: 45px;}
+.footer {font-size: 16px;padding-top: 20px;padding-left: 40px;}
+.footer a {text-decoration: underline; color: #551a8b;}
+#error_message {background-color: #ff2222; color: white; border-radius: 5px;font-size: 16px;padding-left: 13px;
+    width: 713px;}
