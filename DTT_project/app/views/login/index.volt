@@ -8,6 +8,8 @@
     <body>
         <main>
 
+            {# displays the login form #}
+            
             {{this.tag.form("login-submit")}} {#rember this is the opening form tag, if you inspect it you'll see the method is post#}
 
                 <div class="image">
@@ -22,10 +24,12 @@
                         </p>
                     </div>
                     <div class="username_field">
-                        <label for="username">Username</label>
-                        {{ this.tag.textField(["username", "placeholder" : "Your admin username"]) }}
+                        <label for="username", class="field_label">Username</label>
+                        {{ this.tag.textField(["username",
+                        "autofocus" : true, 
+                        "placeholder" : "Your admin username"]) }}
                     </div>
-                    <div id="error_hr"></div>
+
                     <div class="password_field">
                         <label for="password", class="pass_label">Password</label>
                         {{this.tag.passwordField(["password", "placeholder" : "Your admin password"])}}
@@ -40,7 +44,7 @@
 
             </form>
 
-            <p class="footer">DTT Multimedia © 2015. All rights reserved. <a href='/DTT_project/admin-login'>Site admin</a></p>
+            <p class="footer">DTT Multimedia © 2015. All rights reserved. <a class="underlined_a" href='/DTT_project/admin-login'>Site admin</a></p>
 
         </main>
     </body>

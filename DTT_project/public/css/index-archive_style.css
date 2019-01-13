@@ -1,0 +1,19 @@
+body {background-color: #00a0b0; margin-right: 38%; margin-top: 25px}
+hr {background-color:rgb(51, 146, 156); width: 96%;padding-top: 3px;}
+main {background-color: white; border-radius: 15px; height: auto; width: 162%;}
+a {color: #edc951}
+h1{color: #eb6841; padding-left: 40px;padding-bottom: 60px;}
+.image {padding-top: 70px; padding-left: 60px; padding-bottom: 30px}
+.image img {width:36%; height: 14%;}
+.footer {font-size: 16px;padding-bottom:25px;padding-left: 40px; padding-top: 15px;}
+.underlined_a {text-decoration: underline; color: #551a8b; padding-left: 40px;}
+.footer_a {text-decoration: underline; color: #551a8b;}
+.date {color: #eb6841; display: inline;}
+.articles {padding-left: 40px; padding-bottom: 10px;}
+.floaty {float: left; position: absolute; padding-left: 70px; display: inline; margin-top: -12px;}
+.preview {padding-left: 154px; width: 67%; padding-bottom: 30px; padding-top: 30px;}
+.top_hr {margin-bottom: 60px;}
+.outline_h:focus {outline-style: dotted; outline-color: #edc951;}
+.outline_h:hover {text-decoration: none; color:#edc951; }
+.count {padding-left: 40px;}
+#special {padding-top: 20px;padding-bottom: 15px;}

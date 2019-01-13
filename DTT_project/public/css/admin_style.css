@@ -1,0 +1,18 @@
+body {background-color: #00a0b0; margin-right: 38%; margin-top: 25px}
+hr {background-color:rgb(51, 146, 156); width: 96%;padding-top: 3px;}
+main {background-color: white; border-radius: 15px; height: auto; width: 162%; min-width: 720px;}
+h1 {color: #eb6841; padding-left: 40px;padding-bottom: 30px; padding-top: 30px;}
+h2 {color: #edc951}
+.title_a {color:black;}
+.title_a:hover {color: black; text-decoration: none;}
+.image {padding-top: 70px; padding-left: 60px; padding-bottom: 30px}
+.image img {width:36%; height: 14%;}
+.footer {font-size: 16px;padding-bottom:25px;padding-left: 40px; padding-top: 15px;}
+.underlined_a {text-decoration: underline; color: #551a8b;}
+.count {padding-left: 40px;}
+.widget {margin-left: 50px;}
+.pad {padding-right: 400px;}
+.main_content {padding-left: 2.5%; min-height: 400px;}
+.first_row {background-color: #eb6841; color: white; border-bottom: 2px #00a0b0 solid; height: 40px;}
+#special {padding-top: 20px;padding-bottom: 15px;}
+#table {width: 97%; border-left: 2px #00a0b0 solid; border-top: 2px #00a0b0 solid; border-right: 2px #00a0b0 solid;}

@@ -12,6 +12,7 @@ class LoginController extends ControllerBase
 
     public function homepageAction()
     {
+
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
@@ -19,18 +20,17 @@ class LoginController extends ControllerBase
         // and thus there is no reason of sanitizing user input
         $user = Admin_info::findFirstByUsername($username);
 
-
+        //check if password is correct, if so, it sets the auth and lets you login
+        //otherwise it won't let you login
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
                 // The password is valid
                 $this->session->set('auth', $user->id);
                 return $this->response->redirect('admin-page');
-            }
-            else{
+            } else{
                 goto jump;
             }
-        }
-        else {
+        } else {
             jump:
             //it hashes some random in order to waste time and prevent timing attacks
             $this->security->hash(rand());
@@ -63,4 +63,3 @@ class LoginController extends ControllerBase
     */
 
 }
-
