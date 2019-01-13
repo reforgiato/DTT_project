@@ -1,0 +1,37 @@
+body {background-color: #00a0b0; margin-right: 38%; margin-top: 25px}
+hr {background-color:rgb(51, 146, 156); width: 96%;padding-top: 3px;}
+main {background-color: white; border-radius: 15px; height: auto; width: 162%; min-width: 720px;}
+h1 {color: #eb6841; padding-left: 40px;padding-bottom: 30px; padding-top: 30px;}
+h2 {color: #edc951}
+form input[type=submit] {border-radius: 7px; width:10%;margin-top: 50px; margin-left: 31%;
+    background-color: #ef7d50; color:white;}
+.delete_a {text-decoration: underline;  padding-left: 1.5%}
+.image {padding-top: 70px; padding-left: 60px; padding-bottom: 30px}
+.image img {width:36%; height: 14%;}
+.footer {font-size: 16px;padding-bottom:25px;padding-left: 40px; padding-top: 15px;}
+.underlined_a {text-decoration: underline; color: #551a8b;}
+.widget {margin-left: 50px;}
+.pad {padding-right: 400px;}
+.main_content {background-color: #fff4cf; width: 97%; margin-left: 1.5%;border-radius: 5px;
+box-shadow:  5px  5px 2.5px grey,
+              -5px -5px 2.5px grey,
+               5px -5px 2.5px grey,
+              -5px  5px 2.5px grey;}
+
+.error {background-color: red; margin-left: 40px; width: 10%; color: white;}
+
+#sub_button {position: absolute; margin-left: 30%; height: 40px;}
+#canc_button {margin-left: 50%; height:40px; margin-bottom: 50px;}
+
+#article_title{background-color: #eeffee; border-radius: 5px; width: 85%}
+#article_summary{background-color: #eeffee; border-radius: 5px;width: 83%; height: 100px;}
+#article_content{background-color: #eeffee; border-radius: 5px;width: 83.6%; height: 500px;}
+#publication_date{background-color: #eeffee; border-radius: 5px;width: 83.4%;}
+
+#title {padding-left: 9%; padding-top: 100px;}
+#summary {padding-left: 7%;}
+#content {padding-left: 7.5%;}
+#date {padding-left: 7%}
+
+#summary_position {float: left;  padding-right: 3px;}
+#content_position {float: left; padding-right: 3px;}

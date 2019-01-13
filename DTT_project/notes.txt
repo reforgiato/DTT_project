@@ -1,0 +1,92 @@
+                                                                                       INTRO
+we go into the htdocs folder of xampp so that apache can load the future project, then we open a cmd inside of xamp and we run the command thal let us create the skeleton of our new project: "phalcon project project_name", then we can start apache and sql and we use the url :"localhost/nameofprojectfolder" to go into the index page of it. 
+
+                                                                             VOLT ENGINE FOR VIEWS INTRO
+for some obscure reason, for the volt engine to work, the extension of the view must be .volt, even if in the site it's written that .phtml is also good, this is probably due to how the service in registered into the services.php file, because if you look into the documentation of volt it says that we can register is as a service or as a template engine, and one use the .phtml and the other use .volt, the thing is that the documentation uses a simpler version with just set, while the project by default has a more complicated way of registering it with setshared (magia nera, non ci capisco still un cazzo di queste dinamiche del framework, con linguaggio piu complicato.. troppo intricato), because of this, when i say filex.phtml further, i mean filex.volt
+
+                                                                                  CONTROLLER AND VIEW
+Normally phalcon will look for what to do inside a controller named IndexController.php so if we put some html inside of that, it will display it, but it is not reccomended as, output must be processed by the view as mvc says. phalcon nel caso non ci sia nulla nel controller da mostrare cercare una view con lo stesso nome dell'ultima action utilizzata,     all'interno di una cartella con lo stesso nome dell'ultimo controller utilizzato, qui ti potresti chiedere si ma non hanno lo stesso nome, quindi WHAT AFFUCK, il nome a cui si riferisce è quello che viene dato nel cmd quando creiamo il nuovo controller*
+
+                                                                                       SIGNUP
+Now we modify the index.phtml file to show the signup page, be aware that in that page we're using the template bullshit, in order to do just some basic html with a link that will later database the shit out of the information that we will put into it (in fact if we inspect the page we will the the normal html), this is done in order to respect framworw      standards. then we create a new controller that will handle the sending of information to the new view specificalli built for the signup page:
+"phalcon create-controller --name signup" *(questo è il nome a cui si riferisce quando spiego il bordello al paragrafo qua sopra, dunque abbiamo il nome che viene diplayato ovvero SingnupControlle.php e il nome di cui phalcon si fotte quando fa le associazioni, ovvero signup e infatti tutto torna, perche creeremo all interno di view, un nuovo folder chiamato signup, ove ci sara un file phtml chiamato index.. tutto torna)
+
+now we lay down the volt code (html+php) in the signup index view, and then we need to register the button "register" in the signupcontroller, otherwise we'll have an error, we register the action, through a public function inside the class of the controller signup, but it is important that the name is the same as what is in the view+Action (nameAction), regarding the button, in the code we have  this piece of code: "{{this.tag.form("signup/register")}}, this apparently is forming the link of the logic bullshit of the application to the button,  "register", is the name that phalcon is looking for in order to work, and "signup" is probably the name that we specified when we created the controller with the cmd, in fact if the name is not the same, this error will pop up: "Action 'register' was not found on handler 'signup', that means phalcon is looking for a method called registerAction in the controller of the signup, but it's not finding it.
+
+when we see something like that: "this.tag.submitButton("Register")", this is probably an easier way to use some specific html, embedded in the phalcon services, this in particular creates the button, if you don't understand something about this kind of html shit, open the view in the browser and inspect it, it will show the clear html
+this is all the doing of the Phalcon/tag class, more info on that in the documentation, there's a link on it
+
+                                                                                 (PICCOLA PARENTESI SU BOOTSTRAP)
+(A NA CERTA NEL VIDEO CHE SEGUIVO INTRODUCE BOOTSTRAP, ALLORA CE PROVO ANCHE IO, GIUSTO PER PRENDERE FAMILIARITA CON LAGGIUNGERE DI ROBA AGGIUNTIVA ETC.. E NIENTE RIMANGO BLOCCATO 4 ORE E PASSA, I PASSAGGI DA SEGUIRE SONO I SEGUENTI: DOWNLOADA BOOTSTRAP ED INSERISCI IL FILE BOOTSTRAP.CSS NEL FOLDER CSS IN PUBLIC, STESSA COSA PER IL FILE BOOTSTRAP.JS NEL FOLDER JS SEMPRE PUBLIC, POI SI VA NEL CONTROLLERBASE E SI SCRIVE UNA FUNZIONE DOVE VENGONO CARICATI QUESTI DUE SERVIZI, ALLA FINE IL FILE COMPLETO RISULTA COSI:
+
+<?php
+
+use Phalcon\Mvc\Controller;
+
+    class ControllerBase extends Controller
+    {
+    	public function index()
+    {
+	        $this->assets->addCss('css/bootstrap.css');
+
+	        $this->assets->addJs('js/bootstrap.js');
+    }
+	}
+ 
+ ADESSO OGNI CONTROLLER AVRA A DISPOSIZIONE BOOTSTRAPCSS E BOOTSTRAP JS, DUNQUE QUI VIENE LA PARTE STRONZA, CONTINUAVO A PRENDERE UN ERRORE, NONOSTANTE SEMBRASSE TUTTO OK, IL PROBLEMA ERA NEL MODO IN CUI VOLT ACCEDE AGLI ARRAYS, NEL VIDEO USAVA QUESTO "=>" MA LUI NON USAVA VOLT, E IO NON PENSAVO CHE CAMBIASSE QUALCOSA, IN REALTA GLI ARRAYS SI UTILIZZANO CON QUESTO ":" DUNQUE VIENE UNA LINEA DEL GENERE:
+
+{{ this.tag.textField(["name", "class" : "form-control", "placeholder" : "Enter Full Name"]) }}                                                                               
+
+IL MODO SBAGLIATO ERA QUESTO:
+
+{{ this.tag.textField(["name", "class" => "form-control", "placeholder" => "Enter Full Name"]) }}   
+
+DEVO DEVISAMENTE STARE PIU ATTENTO A QUALSIASI COSA CHE SIA CODICE PHP, PERCHE PROBABILMENTE LA SINTASSI E' DIVERSA) 
+
+                                                                 DATABASE CONNECTION
+first thing we go into the config.php and we write the name of the database we wish to connect to with all the necessary info as password ect.. then we create a file in the model folder, the file needs to be called the same as the table we want to upload data into, but with a maiusc initial (i don't really know if this is true but i've noticed that maiusc or not, phalcon do not care, and sometimes across file, Admin_info in the project is equal to admin_info in the table name, and that is valid also for some other stuff ) in this file we need to use the model service and initialize a class extending that model, for having the variables that represents the fields in the table of database:
+
+use Phalcon\Mvc\Model;
+
+class Admin_info extends Model
+{
+    public $id;
+    public $username;
+    public $password;
+}                                                                                                                                                                              
+
+the name of the object needs to be the same as the one of the table in the db
+
+Then in the view where the form for taking data is used, we'll see that among the normal html, we have this line of code:
+{{this.tag.form("login/homepage")}}
+this is the opening tag of the form, that indicates that, the views where the form is need to be named login (not the view itself but the folder), and that the route where the info will be sent will be called homepage, (this can be changed with direc http redirect, we'll se forward how but that is as default)
+
+now since the we have login/homepage, in the controller for this view we will need a function called homepageAction, where we will have the logic code that will basically upload the info in the db, or return an error flash message if something is wrong (missing password ect..) the code for the logic is this:
+
+    public function homepageAction()
+    {
+        $user = new Admin_info();
+
+        // Store and check for errors
+        $success = $user->save(
+            $this->request->getPost(),
+            ['username', 'password']
+        );
+
+        if ($success) {
+
+            echo "<h1> Homepage </h1>";
+        }
+
+        else {
+
+            $this->flashSession->error('Incorrect username or password. Please try again');
+
+            return $this->response->redirect('login');
+        } 
+    }                                                                                                                                                                                                                                                
+basically what we do here is to initiate an object from the class Admin_info initialized in the model, and we getpost the username and password from the form and save into the success variable, then if success has something into it, it will vardump true, otherwise false, so we can use it in if else statement, if it has something then we display something (for now we don't go directly into the homepage so we don't need a controller yet, but in the url it will still be homepage), else (maybe password is missing) we'll use a service from phalcon called flash message:
+
+                                                                          FLASH MESSAGE
+flash message it's something like an alert but it get placed into the page, like some javascript code that lets appear some html if some condition is satisfied, in this case we have the condition that if something is missing from the form field, then we place this error message on the page, but in order to do that we need to use a variant of the flash message called flashsession, that saves the message into a session so that it can be passed to the next page and printed out, here this is necessary because, by default, the info are sent forward to the homepage route, but we actually want that message to appear on the login page, and so we use an http redirect, to redirect the view into the login page, and carry on with us the session with the message saved in it, that will be MANUALLY printed out in the login view with the code: 
+<p>{{this.flashSession.output()}}</p>, if the session is empty it won't cause errors, so we can have it in the view from the start without any problems                                                                            
