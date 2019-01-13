@@ -16,11 +16,13 @@
 
             <h1>Article Archive</h1>
 
+                                
+                               
             <?php foreach ($archived_articles as $archived_article) { ?>
             
             <div class="articles">
                 <p class="date"><?= $archived_article->date ?></p>
-                <h2 class="floaty"><a class= "outline_h" href="/DTT_project/article?title=<?= $archived_article->title ?>">
+                <h2 class="floaty"><a class= "outline_h" href="/DTT_project/article?id=<?= $archived_article->id ?>">
                 <?= $archived_article->title ?></a></h2>
                 <p class="preview"><?= $archived_article->preview ?></p>
             </div>

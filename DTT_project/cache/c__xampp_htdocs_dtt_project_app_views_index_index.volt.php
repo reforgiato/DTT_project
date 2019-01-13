@@ -13,10 +13,13 @@
 
             <hr class="top_hr">
 
+            
             <?php foreach ($articles as $article) { ?>
             
             <div class="articles">
                 <p class="date"><?= $article->date ?></p>
+
+                
                 <h2 class="floaty"><a class= "outline_h" href="/DTT_project/article?id=<?= $article->id ?>"><?= $article->title ?></a></h2>
                 <div class="preview"><p><?= $article->preview ?></p></div>
             </div>

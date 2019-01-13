@@ -27,6 +27,7 @@
 
             <div class="main_content">
 
+                
                 <?= $this->tag->form('submit-new-article') ?>
                 
                     <div id="title">

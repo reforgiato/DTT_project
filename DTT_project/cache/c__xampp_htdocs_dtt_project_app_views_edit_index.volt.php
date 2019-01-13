@@ -29,10 +29,13 @@
             
             <div class="main_content">
 
+
             <?= $this->tag->form('edit-submit') ?>
 
+                
                 <?= $this->tag->hiddenField(['hidden_field', 'value' => $edit_article->id]) ?>
             
+                
                 <div id="title">
                     <label for="article_title">Article Title</label>
                     <?= $this->tag->textField(['article_title', 'autofocus' => true, 'placeholder' => 'Name of the article.', 'value' => $edit_article->title]) ?>
@@ -69,6 +72,7 @@
             </div>
             <br>
 
+            
             <a class="delete_a" href='/DTT_project/delete-article?id=<?= $edit_article->id ?>'>Delete This Article</a>
 
             <hr>

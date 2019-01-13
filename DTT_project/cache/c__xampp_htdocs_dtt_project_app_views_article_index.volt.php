@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Homepage</title>
-        <?= $this->assets->outputCss() ?>  
+        <?= $this->assets->outputCss() ?>
     </head>
 
     <body>
@@ -13,7 +13,8 @@
             </div>
 
             <hr class="top_hr">
-            
+           
+             
             <div class="articles">
             <h1 class="title"><?= $show_article->title ?></h1>
             <p class="content"><?= $show_article->main ?></p>
